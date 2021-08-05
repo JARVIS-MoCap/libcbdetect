@@ -275,12 +275,12 @@ void get_init_location(const cv::Mat& img, const cv::Mat& img_du, const cv::Mat&
     cv::minMaxIdx(hessian_img, &mn, &mx, NULL, NULL);
     hessian_img = cv::abs(hessian_img);
     double thr  = std::abs(mn * params.init_loc_thr);
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    //std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     for(const auto& r : params.radius) {
       non_maximum_suppression(hessian_img, r, thr, r, corners);
     }
-    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
+    //std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    //std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
     break;
   }
   case LocalizedRadonTransform: {
