@@ -24,12 +24,11 @@ void find_corners_reiszed(const cv::Mat& img, Corner& corners, const Params& par
 
   // resize image
   double scale = 0;
-  if(img.rows < 640 || img.cols < 480) {
+  if(img.rows <= 640 || img.cols <= 480) {
     scale = 2.0;
-  } else if(img.rows >= 640 || img.cols >= 480) {
+  }
+  else  {
     scale = 0.5;
-  } else {
-    return;
   }
   cv::resize(img, img_resized, cv::Size(img.cols * scale, img.rows * scale), 0, 0, cv::INTER_LINEAR);
 
